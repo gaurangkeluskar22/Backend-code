@@ -1,5 +1,6 @@
 import dataSource from "../Datasource/dataSource"
 import { Address } from "../entities/Address.entity"
+import { Profile } from "../entities/Profile.entity"
 import { User } from "../entities/User.entity"
 
 const createUserService = async (data : any, callBack : any) => {
@@ -37,4 +38,33 @@ const addAddressService = async (data : any, callBack : any) => {
     })
 }
 
-module.exports = {createUserService, addAddressService}
+const addProfileService = async (data: any, callBack: any) => {
+    const profileRepo = dataSource.getRepository(Profile)
+    const profile = new Profile()
+    profile.University_name = data.University_name
+    profile.expected_salary = data.expected_salary
+    profile.experience = data.experience
+    profile.grade = data.grade
+    profile.user = data.userId
+
+    await profileRepo.save(profile).then((res)=>{
+        return callBack(null, res)
+    }).catch((err)=>{
+        return callBack(err)
+    })
+}
+
+const getJobSeekersService = async (callBack : any) => {
+    const userRepo = dataSource.getRepository(User)
+    await userRepo.find({
+        where: {
+            role : 1
+        }
+    }).then((res)=>{
+        return callBack(null, res)
+    }).catch((err)=>{
+        return callBack(err)
+    })
+}
+
+module.exports = {createUserService, addAddressService, addProfileService, getJobSeekersService}

@@ -1,5 +1,6 @@
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Address } from "./Address.entity";
+import { Profile } from "./Profile.entity";
 
 enum UserEnum {
     value1 = 1, // jobseeker
@@ -50,4 +51,7 @@ export class User {
 
    @OneToOne(()=> Address, (address)=> address.user, {eager : true})
    address : Address
+
+   @OneToOne(()=> Profile, (profile)=> profile.user, {eager: true})
+   profile : Profile
 }

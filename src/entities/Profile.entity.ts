@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "./User.entity";
 
 @Entity()
 export class Profile {
@@ -16,4 +17,8 @@ export class Profile {
 
     @Column()
     expected_salary : number 
+
+    @OneToOne(()=> User, (user)=> user.profile)
+    @JoinColumn()
+    user : User
 }
