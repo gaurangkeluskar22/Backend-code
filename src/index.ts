@@ -4,11 +4,12 @@ import dataSource from './Datasource/dataSource'
 import { json } from 'stream/consumers'
 import { User } from './entities/User.entity'
 const UserRouter = require('./User/user.router')
-
+const JobRouter = require('./Job/job.router')
 const app = express()
 
 app.use(express.json())
 app.use('/api/user', UserRouter)
+app.use('/api/job', JobRouter)
 
 dataSource.initialize().then(()=>{
     console.log("Database connected successfully!")
