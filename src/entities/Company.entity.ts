@@ -1,5 +1,6 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./User.entity";
+import { Job } from "./Job.entity";
 
 
 @Entity()
@@ -17,4 +18,6 @@ export class Company {
     @JoinColumn()
     user : User
 
+    @OneToMany(()=> Job, (job)=> job.company)
+    job : Job
 }

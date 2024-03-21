@@ -3,6 +3,7 @@ import { User } from "../entities/User.entity";
 import { Address } from "../entities/Address.entity";
 import { Profile } from "../entities/Profile.entity";
 import { Company } from "../entities/Company.entity";
+import { Job } from "../entities/Job.entity";
 
 const dataSource = new DataSource({
   type : 'mysql',
@@ -17,7 +18,8 @@ const dataSource = new DataSource({
     Address, 
     User,
     Profile,
-    Company
+    Company,
+    Job
   ]
 })
 
