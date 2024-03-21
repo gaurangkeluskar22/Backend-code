@@ -57,7 +57,7 @@ const createJob = (req : Request, res : Response) => {
         else{
             res.status(200).json({
                 success : false,
-                message : "Job has been created!W"
+                message : "Job has been created!"
             })
         }
     })
