@@ -19,6 +19,9 @@ export class Job {
     @Column()
     salary : number
 
+    @Column({default : true})
+    visible : Boolean
+
     @ManyToOne(()=> Company , (company) => company.job)
     @JoinColumn()
     company : Company

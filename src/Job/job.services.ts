@@ -41,5 +41,10 @@ const createJobService = async (data : any, callBack : any) => {
     })
 }
 
+const updateJobService = async (data : any, callBack : any) => {
+    const jobRepo = dataSource.getRepository(Job)
+    
+}
+
 
 module.exports = {addCompanyService, getCompaniesService, createJobService}
